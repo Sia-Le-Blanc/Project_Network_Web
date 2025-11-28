@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA - 커뮤니티</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/pages.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">RA</a>
+            <ul class="nav-links">
+                <li><a href="index.html">홈</a></li>
+                <li><a href="gameinfo.html">게임소개</a></li>
+                <li><a href="news.html">소식</a></li>
+                <li><a href="community.html" style="color: #e94560;">커뮤니티</a></li>
+                <li><a href="download.html">다운로드</a></li>
+                <li><a href="login.html">로그인</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-hero">
+        <div>
+            <h1>커뮤니티</h1>
+            <p>플레이어들과 소통하고 정보를 공유하세요</p>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="community-layout">
+            <aside class="sidebar">
+                <button class="create-post-btn" id="createPostBtn">✍️ 글쓰기</button>
+                <div class="sidebar-category active" data-category="전체">
+                    <span class="category-icon">🏠</span>
+                    <span>전체 게시판</span>
+                </div>
+                <div class="sidebar-category" data-category="자유">
+                    <span class="category-icon">💬</span>
+                    <span>자유 게시판</span>
+                </div>
+                <div class="sidebar-category" data-category="질문/답변">
+                    <span class="category-icon">❓</span>
+                    <span>질문/답변</span>
+                </div>
+                <div class="sidebar-category" data-category="공략/팁">
+                    <span class="category-icon">📊</span>
+                    <span>공략/팁</span>
+                </div>
+                <div class="sidebar-category" data-category="팬아트">
+                    <span class="category-icon">🎨</span>
+                    <span>팬아트</span>
+                </div>
+                <div class="sidebar-category" data-category="영상">
+                    <span class="category-icon">🎥</span>
+                    <span>영상</span>
+                </div>
+                <div class="sidebar-category" data-category="길드모집">
+                    <span class="category-icon">⚔️</span>
+                    <span>길드 모집</span>
+                </div>
+                <div class="sidebar-category" data-category="거래">
+                    <span class="category-icon">💎</span>
+                    <span>거래</span>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="search-bar">
+                    <input type="text" class="search-input" id="searchInput" placeholder="게시글 검색...">
+                    <button class="search-btn" id="searchBtn">🔍 검색</button>
+                </div>
+
+                <div id="postsContainer">
+                    <!-- 게시글 목록이 여기에 동적으로 로딩됩니다 -->
+                </div>
+
+                <div class="pagination" id="pagination">
+                    <!-- 페이지네이션이 여기에 동적으로 생성됩니다 -->
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- 글쓰기 모달 (필요시) -->
+    <div id="createPostModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>새 글 작성</h2>
+            <form id="createPostForm">
+                <div class="form-group">
+                    <label for="postTitle">제목</label>
+                    <input type="text" id="postTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="postCategory">카테고리</label>
+                    <select id="postCategory" required>
+                        <option value="자유">자유</option>
+                        <option value="질문/답변">질문/답변</option>
+                        <option value="공략/팁">공략/팁</option>
+                        <option value="팬아트">팬아트</option>
+                        <option value="영상">영상</option>
+                        <option value="길드모집">길드모집</option>
+                        <option value="거래">거래</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="postContent">내용</label>
+                    <textarea id="postContent" rows="10" required></textarea>
+                </div>
+                <button type="submit" class="btn">게시글 작성</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 RA Game. All rights reserved.</p>
+    </footer>
+
+    <script src="../shared/api.js"></script>
+    <script src="../assets/js/community.js"></script>
+</body>
+</html>

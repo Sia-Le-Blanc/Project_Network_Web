@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA - 새로운 전설이 시작된다</title>
+    <link rel="stylesheet" href="../assets/css/common.css">
+    <link rel="stylesheet" href="../assets/css/index.css">
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo">RA</div>
+        <ul class="nav-links">
+            <li><a href="index.html">홈</a></li>
+            <li><a href="gameinfo.html">게임소개</a></li>
+            <li><a href="news.html">소식</a></li>
+            <li><a href="community.html">커뮤니티</a></li>
+            <li><a href="download.html">다운로드</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <canvas class="hero-video" id="heroCanvas"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>RA</h1>
+        <p>새로운 전설이 시작된다</p>
+        <button class="btn"><a href="login.html">지금 플레이하기</a></button>
+    </div>
+</section>
+
+<section class="section" id="features">
+    <h2>게임 특징</h2>
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <canvas class="icon-3d" data-icon="sword"></canvas>
+            </div>
+            <h3>박진감 넘치는 전투</h3>
+            <p>실시간 액션 전투 시스템으로 긴장감 넘치는 전투를 경험하세요.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <canvas class="icon-3d" data-icon="globe"></canvas>
+            </div>
+            <h3>광대한 세계관</h3>
+            <p>끝없이 펼쳐진 판타지 세계를 탐험하고 숨겨진 비밀을 발견하세요.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <canvas class="icon-3d" data-icon="team"></canvas>
+            </div>
+            <h3>협동 플레이</h3>
+            <p>친구들과 함께 던전을 공략하고 강력한 보스를 물리치세요.</p>
+        </div>
+    </div>
+</section>
+
+<section class="news-section" id="news">
+    <h2 style="color: #e94560; margin-bottom: 50px;">최신 소식</h2>
+    <div class="news-grid" id="newsContainer">
+        <!-- API에서 동적으로 로딩될 뉴스 내용 -->
+    </div>
+</section>
+
+<section class="section">
+    <div style="text-align: center;">
+        <h2>지금 바로 시작하세요</h2>
+        <p style="font-size: 18px; color: #ccc; margin-bottom: 30px;">
+            RA의 세계로 떠나는 여정을 시작하세요
+        </p>
+        <button class="btn" id="downloadBtn">무료 다운로드</button>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2025 RA Game. All rights reserved.</p>
+</footer>
+
+<script src="../shared/api.js"></script>
+<script src="../assets/js/three.min.js"></script>
+<script src="../assets/js/index.js"></script>
+</body>
+</html>
