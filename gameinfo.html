@@ -4,346 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RA - 게임소개</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0a0a;
-            color: #fff;
-        }
-
-        header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            padding: 20px 0;
-            border-bottom: 2px solid #e94560;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-size: 32px;
-            font-weight: bold;
-            background: linear-gradient(90deg, #e94560, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #e94560;
-        }
-
-        .page-hero {
-            height: 400px;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
-                        linear-gradient(135deg, #1a1a2e, #16213e);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            border-bottom: 3px solid #e94560;
-        }
-
-        .page-hero h1 {
-            font-size: 56px;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, #e94560, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .page-hero p {
-            font-size: 20px;
-            color: #ccc;
-        }
-
-        .section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        .section-title {
-            font-size: 42px;
-            margin-bottom: 20px;
-            color: #e94560;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            font-size: 18px;
-            color: #ccc;
-            text-align: center;
-            margin-bottom: 60px;
-            line-height: 1.6;
-        }
-
-        .story-section {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            padding: 80px 20px;
-            margin: 0;
-            max-width: none;
-        }
-
-        .story-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .story-text h2 {
-            font-size: 42px;
-            color: #e94560;
-            margin-bottom: 30px;
-        }
-
-        .story-text p {
-            font-size: 18px;
-            line-height: 1.8;
-            color: #ccc;
-            margin-bottom: 20px;
-        }
-
-        .story-visual {
-            background: linear-gradient(135deg, #e94560, #ff6b6b);
-            height: 400px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 72px;
-            box-shadow: 0 20px 60px rgba(233, 69, 96, 0.4);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-
-        .feature-box {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            padding: 40px;
-            border-radius: 20px;
-            border: 2px solid #2a2a3e;
-            transition: all 0.3s;
-        }
-
-        .feature-box:hover {
-            border-color: #e94560;
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(233, 69, 96, 0.3);
-        }
-
-        .feature-icon-large {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #e94560, #ff6b6b);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            margin-bottom: 25px;
-        }
-
-        .feature-box h3 {
-            font-size: 26px;
-            color: #ff6b6b;
-            margin-bottom: 15px;
-        }
-
-        .feature-box p {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #ccc;
-        }
-
-        .classes-section {
-            background: #16213e;
-            padding: 80px 20px;
-            margin: 0;
-            max-width: none;
-        }
-
-        .classes-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .class-card {
-            background: linear-gradient(135deg, #1a1a2e, #0a0a0a);
-            border-radius: 15px;
-            overflow: hidden;
-            border: 2px solid #2a2a3e;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .class-card:hover {
-            border-color: #e94560;
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(233, 69, 96, 0.4);
-        }
-
-        .class-image {
-            height: 250px;
-            background: linear-gradient(135deg, #e94560, #ff6b6b);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px;
-        }
-
-        .class-info {
-            padding: 25px;
-        }
-
-        .class-info h3 {
-            font-size: 24px;
-            color: #e94560;
-            margin-bottom: 10px;
-        }
-
-        .class-info p {
-            font-size: 15px;
-            color: #ccc;
-            line-height: 1.6;
-        }
-
-        .stats-section {
-            text-align: center;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .stat-box {
-            padding: 40px;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            border-radius: 20px;
-            border: 2px solid #e94560;
-        }
-
-        .stat-number {
-            font-size: 56px;
-            font-weight: bold;
-            background: linear-gradient(90deg, #e94560, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 15px;
-        }
-
-        .stat-label {
-            font-size: 18px;
-            color: #ccc;
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, #e94560, #ff6b6b);
-            padding: 80px 20px;
-            text-align: center;
-            margin: 0;
-            max-width: none;
-        }
-
-        .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .cta-content h2 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .cta-content p {
-            font-size: 20px;
-            margin-bottom: 40px;
-            opacity: 0.9;
-        }
-
-        .btn {
-            padding: 18px 50px;
-            font-size: 20px;
-            background: #fff;
-            color: #e94560;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        footer {
-            background: #0a0a0a;
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 2px solid #e94560;
-        }
-
-        footer p {
-            color: #888;
-        }
-
-        @media (max-width: 768px) {
-            .story-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .page-hero h1 {
-                font-size: 36px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/gameinfo.css">
 </head>
 <body>
     <header>
@@ -355,6 +17,7 @@
                 <li><a href="news.html">소식</a></li>
                 <li><a href="community.html">커뮤니티</a></li>
                 <li><a href="download.html">다운로드</a></li>
+                <li><a href="login.html">로그인</a></li>
             </ul>
         </nav>
     </header>
@@ -388,8 +51,8 @@
     </section>
 
     <section class="section">
-        <h2 class="section-title">핵심 특징</h2>
-        <p class="section-subtitle">
+        <h2>핵심 특징</h2>
+        <p style="text-align: center; color: #ccc; margin-bottom: 60px;">
             RA만의 독특한 게임플레이를 경험하세요
         </p>
         <div class="features-grid">
@@ -445,8 +108,8 @@
     </section>
 
     <section class="classes-section">
-        <h2 class="section-title" style="color: #e94560;">클래스 소개</h2>
-        <p class="section-subtitle">
+        <h2 style="color: #e94560; text-align: center; margin-bottom: 20px;">클래스 소개</h2>
+        <p style="text-align: center; color: #ccc; margin-bottom: 60px;">
             당신의 플레이 스타일에 맞는 클래스를 선택하세요
         </p>
         <div class="classes-grid">
@@ -482,7 +145,7 @@
     </section>
 
     <section class="section stats-section">
-        <h2 class="section-title">RA의 기록</h2>
+        <h2>RA의 기록</h2>
         <div class="stats-grid">
             <div class="stat-box">
                 <div class="stat-number">500만+</div>
@@ -514,5 +177,7 @@
     <footer>
         <p>&copy; 2025 RA Game. All rights reserved.</p>
     </footer>
+
+    <script src="assets/js/common.js"></script>
 </body>
 </html>
