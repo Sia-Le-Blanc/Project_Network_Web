@@ -179,7 +179,11 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    line-clamp: 2; /* 표준 속성 */
     overflow: hidden;
+    /* Fallback for non-webkit browsers */
+    max-height: 2.6em; /* 2줄 높이 */
+    text-overflow: ellipsis;
 }
 
 .post-meta {
@@ -270,7 +274,11 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    line-clamp: 2; /* 표준 속성 */
     overflow: hidden;
+    /* Fallback for non-webkit browsers */
+    max-height: 3em; /* 2줄 높이 */
+    text-overflow: ellipsis;
 }
 
 .popular-stats {

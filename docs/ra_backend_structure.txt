@@ -1,0 +1,624 @@
+RA 게임 홈페이지 - 백엔드 프로젝트 구조
+=============================================
+
+📁 추천 기술 스택
+-----------------
+
+Option 1: Node.js (빠른 개발, JavaScript 통일)
+├─ Runtime: Node.js 20.x
+├─ Framework: Express.js 4.x
+├─ ORM: Prisma or Sequelize
+├─ Auth: Passport.js + JWT
+└─ Validation: Joi or Zod
+
+Option 2: Spring Boot (엔터프라이즈급, 안정성)
+├─ Java: 17+
+├─ Framework: Spring Boot 3.x
+├─ ORM: Spring Data JPA
+├─ Auth: Spring Security + JWT
+└─ Validation: Hibernate Validator
+
+Option 3: Python (간편한 개발)
+├─ Runtime: Python 3.11+
+├─ Framework: FastAPI
+├─ ORM: SQLAlchemy
+├─ Auth: FastAPI-JWT-Auth
+└─ Validation: Pydantic
+
+권장: Node.js + Express (프론트엔드가 JavaScript이므로 통일성)
+
+
+📁 Node.js + Express 프로젝트 구조
+==================================
+
+ra-backend/
+│
+├── src/
+│   ├── config/                  # 설정 파일
+│   │   ├── database.js          # DB 연결 설정
+│   │   ├── jwt.js               # JWT 설정
+│   │   ├── redis.js             # Redis 설정
+│   │   └── s3.js                # S3/파일 저장소 설정
+│   │
+│   ├── controllers/             # 컨트롤러 (요청 처리)
+│   │   ├── authController.js    # 인증 관련
+│   │   ├── userController.js    # 사용자 관리
+│   │   ├── newsController.js    # 소식/공지
+│   │   ├── communityController.js  # 커뮤니티
+│   │   ├── gameController.js    # 게임 정보
+│   │   └── downloadController.js   # 다운로드
+│   │
+│   ├── services/                # 비즈니스 로직
+│   │   ├── authService.js
+│   │   ├── userService.js
+│   │   ├── newsService.js
+│   │   ├── communityService.js
+│   │   ├── gameService.js
+│   │   ├── emailService.js      # 이메일 발송
+│   │   └── fileService.js       # 파일 업로드
+│   │
+│   ├── models/                  # 데이터 모델
+│   │   ├── User.js
+│   │   ├── News.js
+│   │   ├── Post.js
+│   │   ├── Comment.js
+│   │   └── Download.js
+│   │
+│   ├── routes/                  # 라우트 정의
+│   │   ├── authRoutes.js        # /api/auth/*
+│   │   ├── userRoutes.js        # /api/user/*
+│   │   ├── newsRoutes.js        # /api/news/*
+│   │   ├── communityRoutes.js   # /api/community/*
+│   │   ├── gameRoutes.js        # /api/game/*
+│   │   └── downloadRoutes.js    # /api/download/*
+│   │
+│   ├── middlewares/             # 미들웨어
+│   │   ├── auth.js              # 인증 미들웨어
+│   │   ├── validate.js          # 요청 검증
+│   │   ├── errorHandler.js      # 에러 핸들러
+│   │   ├── rateLimit.js         # Rate Limiting
+│   │   └── cors.js              # CORS 설정
+│   │
+│   ├── utils/                   # 유틸리티
+│   │   ├── jwt.js               # JWT 생성/검증
+│   │   ├── bcrypt.js            # 비밀번호 암호화
+│   │   ├── validators.js        # 검증 함수들
+│   │   └── logger.js            # 로깅
+│   │
+│   ├── db/                      # 데이터베이스
+│   │   ├── migrations/          # 마이그레이션
+│   │   └── seeders/             # 초기 데이터
+│   │
+│   └── app.js                   # Express 앱 설정
+│
+├── tests/                       # 테스트
+│   ├── unit/
+│   ├── integration/
+│   └── e2e/
+│
+├── uploads/                     # 업로드 파일 임시 저장
+│
+├── logs/                        # 로그 파일
+│
+├── .env                         # 환경 변수
+├── .env.example                 # 환경 변수 예시
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── README.md
+└── server.js                    # 서버 진입점
+
+
+📄 주요 파일 예시 코드
+======================
+
+1. server.js (진입점)
+----------------------
+const app = require('./src/app');
+const config = require('./src/config/database');
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
+
+
+2. src/app.js (Express 설정)
+-----------------------------
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
+
+// 라우트 임포트
+const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
+const newsRoutes = require('./routes/newsRoutes');
+const communityRoutes = require('./routes/communityRoutes');
+const gameRoutes = require('./routes/gameRoutes');
+const downloadRoutes = require('./routes/downloadRoutes');
+
+// 미들웨어
+const errorHandler = require('./middlewares/errorHandler');
+
+const app = express();
+
+// 기본 미들웨어
+app.use(helmet());
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Rate Limiting
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15분
+    max: 100 // 최대 100 요청
+});
+app.use('/api/', limiter);
+
+// 라우트 등록
+app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/news', newsRoutes);
+app.use('/api/community', communityRoutes);
+app.use('/api/game', gameRoutes);
+app.use('/api/download', downloadRoutes);
+
+// 에러 핸들러
+app.use(errorHandler);
+
+module.exports = app;
+
+
+3. src/routes/authRoutes.js
+----------------------------
+const express = require('express');
+const router = express.Router();
+const authController = require('../controllers/authController');
+const { validateLogin, validateSignup } = require('../middlewares/validate');
+
+// POST /api/auth/login
+router.post('/login', validateLogin, authController.login);
+
+// POST /api/auth/signup
+router.post('/signup', validateSignup, authController.signup);
+
+// POST /api/auth/refresh
+router.post('/refresh', authController.refreshToken);
+
+// POST /api/auth/logout
+router.post('/logout', authController.logout);
+
+// GET /api/auth/social/:provider
+router.get('/social/:provider', authController.socialLogin);
+
+module.exports = router;
+
+
+4. src/controllers/authController.js
+-------------------------------------
+const authService = require('../services/authService');
+
+class AuthController {
+    async login(req, res, next) {
+        try {
+            const { email, password, remember } = req.body;
+            
+            const result = await authService.login(email, password, remember);
+            
+            res.status(200).json({
+                success: true,
+                data: result,
+                message: '로그인 성공'
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
+    
+    async signup(req, res, next) {
+        try {
+            const userData = req.body;
+            
+            const result = await authService.signup(userData);
+            
+            res.status(201).json({
+                success: true,
+                data: result,
+                message: '회원가입이 완료되었습니다.'
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
+    
+    async refreshToken(req, res, next) {
+        try {
+            const { refreshToken } = req.body;
+            
+            const result = await authService.refreshToken(refreshToken);
+            
+            res.status(200).json({
+                success: true,
+                data: result
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
+    
+    async logout(req, res, next) {
+        try {
+            const { refreshToken } = req.body;
+            
+            await authService.logout(refreshToken);
+            
+            res.status(200).json({
+                success: true,
+                message: '로그아웃 되었습니다.'
+            });
+        } catch (error) {
+            next(error);
+        }
+    }
+    
+    async socialLogin(req, res, next) {
+        // OAuth 로직 구현
+    }
+}
+
+module.exports = new AuthController();
+
+
+5. src/services/authService.js
+-------------------------------
+const bcrypt = require('bcrypt');
+const jwt = require('../utils/jwt');
+const User = require('../models/User');
+const redisClient = require('../config/redis');
+
+class AuthService {
+    async login(email, password, remember) {
+        // 사용자 조회
+        const user = await User.findByEmail(email);
+        if (!user) {
+            throw new Error('사용자를 찾을 수 없습니다.');
+        }
+        
+        // 비밀번호 검증
+        const isValidPassword = await bcrypt.compare(password, user.password);
+        if (!isValidPassword) {
+            throw new Error('비밀번호가 일치하지 않습니다.');
+        }
+        
+        // 토큰 생성
+        const accessToken = jwt.generateAccessToken({ userId: user.id });
+        const refreshToken = jwt.generateRefreshToken({ userId: user.id });
+        
+        // Refresh Token을 Redis에 저장
+        await redisClient.set(
+            `refresh_token:${user.id}`,
+            refreshToken,
+            'EX',
+            remember ? 30 * 24 * 60 * 60 : 7 * 24 * 60 * 60 // 30일 or 7일
+        );
+        
+        return {
+            accessToken,
+            refreshToken,
+            user: {
+                id: user.id,
+                username: user.username,
+                email: user.email,
+                avatar: user.avatar
+            }
+        };
+    }
+    
+    async signup(userData) {
+        // 중복 체크
+        const existingUser = await User.findByEmail(userData.email);
+        if (existingUser) {
+            throw new Error('이미 존재하는 이메일입니다.');
+        }
+        
+        // 비밀번호 암호화
+        const hashedPassword = await bcrypt.hash(userData.password, 10);
+        
+        // 사용자 생성
+        const newUser = await User.create({
+            ...userData,
+            password: hashedPassword
+        });
+        
+        // 환영 이메일 발송 (비동기)
+        // emailService.sendWelcomeEmail(newUser.email);
+        
+        return {
+            userId: newUser.id,
+            username: newUser.username,
+            email: newUser.email
+        };
+    }
+    
+    async refreshToken(refreshToken) {
+        // 토큰 검증 및 새 토큰 발급
+        const decoded = jwt.verifyRefreshToken(refreshToken);
+        
+        // Redis에서 확인
+        const storedToken = await redisClient.get(`refresh_token:${decoded.userId}`);
+        if (storedToken !== refreshToken) {
+            throw new Error('유효하지 않은 토큰입니다.');
+        }
+        
+        // 새 Access Token 발급
+        const newAccessToken = jwt.generateAccessToken({ userId: decoded.userId });
+        
+        return {
+            accessToken: newAccessToken
+        };
+    }
+    
+    async logout(refreshToken) {
+        const decoded = jwt.verifyRefreshToken(refreshToken);
+        
+        // Redis에서 Refresh Token 삭제
+        await redisClient.del(`refresh_token:${decoded.userId}`);
+    }
+}
+
+module.exports = new AuthService();
+
+
+6. src/middlewares/auth.js (인증 미들웨어)
+------------------------------------------
+const jwt = require('../utils/jwt');
+
+function authenticate(req, res, next) {
+    try {
+        const authHeader = req.headers.authorization;
+        
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+            return res.status(401).json({
+                success: false,
+                error: {
+                    code: 'NO_TOKEN',
+                    message: '인증 토큰이 필요합니다.'
+                }
+            });
+        }
+        
+        const token = authHeader.substring(7);
+        const decoded = jwt.verifyAccessToken(token);
+        
+        req.user = decoded; // { userId: ... }
+        next();
+    } catch (error) {
+        return res.status(401).json({
+            success: false,
+            error: {
+                code: 'INVALID_TOKEN',
+                message: '유효하지 않은 토큰입니다.'
+            }
+        });
+    }
+}
+
+module.exports = authenticate;
+
+
+7. .env (환경 변수)
+-------------------
+# Server
+NODE_ENV=development
+PORT=3000
+
+# Database
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=ra_game
+DB_USER=postgres
+DB_PASSWORD=your_password
+
+# Redis
+REDIS_HOST=localhost
+REDIS_PORT=6379
+
+# JWT
+JWT_ACCESS_SECRET=your_access_token_secret_here
+JWT_REFRESH_SECRET=your_refresh_token_secret_here
+JWT_ACCESS_EXPIRY=15m
+JWT_REFRESH_EXPIRY=7d
+
+# AWS S3
+AWS_ACCESS_KEY_ID=your_aws_key
+AWS_SECRET_ACCESS_KEY=your_aws_secret
+AWS_S3_BUCKET=ra-game-files
+AWS_REGION=ap-northeast-2
+
+# Email
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password
+
+# OAuth
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+FACEBOOK_CLIENT_ID=your_facebook_client_id
+FACEBOOK_CLIENT_SECRET=your_facebook_client_secret
+
+# CORS
+ALLOWED_ORIGINS=http://localhost:8080,https://ra-game.com
+
+
+8. package.json
+---------------
+{
+  "name": "ra-backend",
+  "version": "1.0.0",
+  "description": "RA Game Homepage Backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "test": "jest",
+    "migrate": "sequelize-cli db:migrate",
+    "seed": "sequelize-cli db:seed:all"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "dotenv": "^16.3.1",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.3",
+    "sequelize": "^6.35.0",
+    "redis": "^4.6.11",
+    "express-rate-limit": "^7.1.5",
+    "joi": "^17.11.0",
+    "multer": "^1.4.5-lts.1",
+    "aws-sdk": "^2.1501.0",
+    "nodemailer": "^6.9.7",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-facebook": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "sequelize-cli": "^6.6.2"
+  }
+}
+
+
+📊 데이터베이스 스키마 (PostgreSQL)
+===================================
+
+-- Users 테이블
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    birthdate DATE,
+    region VARCHAR(10),
+    marketing_consent BOOLEAN DEFAULT false,
+    avatar_url VARCHAR(255),
+    level INTEGER DEFAULT 1,
+    class VARCHAR(50),
+    guild_id INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_login TIMESTAMP
+);
+
+-- News 테이블
+CREATE TABLE news (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(200) NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    excerpt TEXT,
+    content TEXT NOT NULL,
+    thumbnail_url VARCHAR(255),
+    author VARCHAR(100),
+    views INTEGER DEFAULT 0,
+    featured BOOLEAN DEFAULT false,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Posts 테이블 (커뮤니티)
+CREATE TABLE posts (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id),
+    title VARCHAR(200) NOT NULL,
+    content TEXT NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    views INTEGER DEFAULT 0,
+    likes INTEGER DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Comments 테이블
+CREATE TABLE comments (
+    id SERIAL PRIMARY KEY,
+    post_id INTEGER REFERENCES posts(id),
+    user_id INTEGER REFERENCES users(id),
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tags 테이블
+CREATE TABLE tags (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) UNIQUE NOT NULL
+);
+
+-- Post_Tags 연결 테이블
+CREATE TABLE post_tags (
+    post_id INTEGER REFERENCES posts(id),
+    tag_id INTEGER REFERENCES tags(id),
+    PRIMARY KEY (post_id, tag_id)
+);
+
+
+🚀 배포 구성
+============
+
+1. 프론트엔드 배포
+   - Vercel / Netlify (정적 호스팅)
+   - Nginx + CDN (커스텀)
+
+2. 백엔드 배포
+   - AWS EC2 + PM2
+   - AWS Elastic Beanstalk
+   - Docker + Kubernetes
+   - Heroku (간단한 배포)
+
+3. 데이터베이스
+   - AWS RDS (PostgreSQL)
+   - Supabase (PostgreSQL)
+
+4. 캐시/세션
+   - AWS ElastiCache (Redis)
+   - Redis Cloud
+
+5. 파일 저장소
+   - AWS S3
+   - Cloudflare R2
+
+
+📌 다음 단계
+============
+
+1. 백엔드 개발 환경 설정
+   □ Node.js 설치
+   □ PostgreSQL 설치
+   □ Redis 설치
+   □ 프로젝트 구조 생성
+
+2. 데이터베이스 설계
+   □ 스키마 정의
+   □ 마이그레이션 작성
+   □ 초기 데이터 Seed
+
+3. API 개발
+   □ 인증 API 구현
+   □ 사용자 API 구현
+   □ 소식 API 구현
+   □ 커뮤니티 API 구현
+
+4. 프론트엔드 연동
+   □ API 클라이언트 작성
+   □ 각 페이지에 API 호출 추가
+   □ 인증 상태 관리
+
+5. 테스트 및 배포
+   □ 단위 테스트 작성
+   □ 통합 테스트
+   □ 배포 환경 설정

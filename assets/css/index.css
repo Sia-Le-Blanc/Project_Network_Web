@@ -305,7 +305,11 @@
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    line-clamp: 3; /* 표준 속성 */
     overflow: hidden;
+    /* Fallback for non-webkit browsers */
+    max-height: 4.8em; /* 3줄 높이 */
+    text-overflow: ellipsis;
 }
 
 /* CTA 섹션 */
