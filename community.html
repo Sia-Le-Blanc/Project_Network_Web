@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RA - 커뮤니티</title>
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/community.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">RA</a>
+            <ul class="nav-links">
+                <li><a href="index.html">홈</a></li>
+                <li><a href="gameinfo.html">게임소개</a></li>
+                <li><a href="news.html">소식</a></li>
+                <li><a href="community.html" style="color: #e94560;">커뮤니티</a></li>
+                <li><a href="download.html">다운로드</a></li>
+                <li><a href="login.html">로그인</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-hero">
+        <div>
+            <h1>커뮤니티</h1>
+            <p>플레이어들과 함께 소통하세요</p>
+        </div>
+    </div>
+
+    <section class="section">
+        <!-- 인기 게시글 -->
+        <div class="popular-posts">
+            <h3>🔥 인기 게시글</h3>
+            <div class="popular-list" id="popularList">
+                <div class="popular-card" data-id="1">
+                    <h4>신규 던전 공략법 완전정복!</h4>
+                    <p>새로 추가된 '어둠의 성채' 던전을 완전히 클리어하는 방법을 상세하게 설명합니다...</p>
+                    <div class="popular-stats">
+                        <span>👤 공략마스터</span>
+                        <span>👁 1,234 · 💬 89</span>
+                    </div>
+                </div>
+                <div class="popular-card" data-id="2">
+                    <h4>레벨 50달성 후기 및 팁 공유</h4>
+                    <p>드디어 레벨 50에 도달했습니다! 효율적인 레벨링 방법과 주의사항을 공유해드려요...</p>
+                    <div class="popular-stats">
+                        <span>👤 레벨업킹</span>
+                        <span>👁 2,567 · 💬 156</span>
+                    </div>
+                </div>
+                <div class="popular-card" data-id="3">
+                    <h4>길드전 우승 비결은?</h4>
+                    <p>저희 길드가 이번 길드전에서 우승할 수 있었던 전략과 팀워크 노하우를 공개합니다...</p>
+                    <div class="popular-stats">
+                        <span>👤 길드마스터</span>
+                        <span>👁 987 · 💬 67</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 게시판 컨트롤 -->
+        <div class="community-controls">
+            <div class="controls-header">
+                <div class="board-tabs">
+                    <button class="board-tab active" data-board="all">전체</button>
+                    <button class="board-tab" data-board="free">자유게시판</button>
+                    <button class="board-tab" data-board="qna">Q&A</button>
+                    <button class="board-tab" data-board="strategy">공략</button>
+                    <button class="board-tab" data-board="guild">길드</button>
+                    <button class="board-tab" data-board="trade">거래</button>
+                </div>
+                <button class="write-post-btn" id="writePostBtn">✏️ 글쓰기</button>
+            </div>
+            <div class="controls-row">
+                <div class="search-container">
+                    <input type="text" class="search-box" placeholder="검색어를 입력하세요..." id="searchBox">
+                    <button class="search-btn" id="searchBtn">🔍</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 게시글 목록 -->
+        <div class="post-list">
+            <div id="postList">
+                <div class="post-header">
+                    <div>번호</div>
+                    <div>제목</div>
+                    <div>작성자</div>
+                    <div>작성일</div>
+                    <div>조회수</div>
+                    <div>댓글</div>
+                </div>
+
+                <div class="post-item" data-id="1">
+                    <div class="post-number">1</div>
+                    <div class="post-title-area">
+                        <div class="post-title">
+                            신규 클래스 '어쌔신' 밸런스 어떻게 생각하세요?
+                            <span style="color: #e94560; font-size: 12px;"> NEW</span>
+                        </div>
+                        <div class="post-preview">어쌔신이 너무 강한 것 같은데 다른 분들은 어떻게 생각하시나요? 특히 PvP에서...</div>
+                        <div class="post-meta">
+                            <span class="post-tag">자유</span>
+                            <span class="post-tag" style="background: #ff6b6b;">HOT</span>
+                        </div>
+                    </div>
+                    <div class="post-author">밸런스우려</div>
+                    <div class="post-date">1시간 전</div>
+                    <div class="post-views">234</div>
+                    <div class="post-comments">15</div>
+                </div>
+
+                <div class="post-item" data-id="2">
+                    <div class="post-number">2</div>
+                    <div class="post-title-area">
+                        <div class="post-title">
+                            길드원 모집합니다! (레벨 40 이상)
+                            <span style="color: #ffa500; font-size: 12px;"> 📷</span>
+                        </div>
+                        <div class="post-preview">활발하게 활동할 길드원을 모집중입니다. 길드전 참여 필수이며...</div>
+                        <div class="post-meta">
+                            <span class="post-tag">길드</span>
+                        </div>
+                    </div>
+                    <div class="post-author">길드마스터A</div>
+                    <div class="post-date">3시간 전</div>
+                    <div class="post-views">156</div>
+                    <div class="post-comments">8</div>
+                </div>
+
+                <div class="post-item" data-id="3">
+                    <div class="post-number">3</div>
+                    <div class="post-title-area">
+                        <div class="post-title">레어 아이템 판매합니다</div>
+                        <div class="post-preview">+7 화염검과 마법 반지를 판매합니다. 쪽지로 연락주세요...</div>
+                        <div class="post-meta">
+                            <span class="post-tag">거래</span>
+                        </div>
+                    </div>
+                    <div class="post-author">아이템딜러</div>
+                    <div class="post-date">5시간 전</div>
+                    <div class="post-views">89</div>
+                    <div class="post-comments">3</div>
+                </div>
+
+                <div class="post-item" data-id="4">
+                    <div class="post-number">4</div>
+                    <div class="post-title-area">
+                        <div class="post-title">초보자 질문: 스킬 포인트 분배 어떻게?</div>
+                        <div class="post-preview">워리어 클래스를 하고 있는데 스킬 포인트를 어떻게 분배해야 할지 모르겠어요...</div>
+                        <div class="post-meta">
+                            <span class="post-tag">Q&A</span>
+                        </div>
+                    </div>
+                    <div class="post-author">초보플레이어</div>
+                    <div class="post-date">1일 전</div>
+                    <div class="post-views">345</div>
+                    <div class="post-comments">12</div>
+                </div>
+
+                <div class="post-item" data-id="5">
+                    <div class="post-number">5</div>
+                    <div class="post-title-area">
+                        <div class="post-title">숨겨진 던전 발견했습니다!</div>
+                        <div class="post-preview">동쪽 숲 깊숙한 곳에 숨겨진 던전이 있더라구요. 보상도 좋고...</div>
+                        <div class="post-meta">
+                            <span class="post-tag">공략</span>
+                        </div>
+                    </div>
+                    <div class="post-author">탐험가123</div>
+                    <div class="post-date">1일 전</div>
+                    <div class="post-views">567</div>
+                    <div class="post-comments">23</div>
+                </div>
+
+                <div class="post-item" data-id="6">
+                    <div class="post-number">6</div>
+                    <div class="post-title-area">
+                        <div class="post-title">오늘 PvP 대회 참여 후기</div>
+                        <div class="post-preview">처음으로 PvP 대회에 참여해봤는데 정말 치열하더라구요...</div>
+                        <div class="post-meta">
+                            <span class="post-tag">자유</span>
+                        </div>
+                    </div>
+                    <div class="post-author">PvP신참</div>
+                    <div class="post-date">2일 전</div>
+                    <div class="post-views">234</div>
+                    <div class="post-comments">7</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 페이지네이션 -->
+        <div class="pagination" id="pagination">
+            <button class="page-btn" data-page="1" disabled>‹</button>
+            <button class="page-btn active" data-page="1">1</button>
+            <button class="page-btn" data-page="2">2</button>
+            <button class="page-btn" data-page="3">3</button>
+            <button class="page-btn" data-page="4">4</button>
+            <button class="page-btn" data-page="5">5</button>
+            <button class="page-btn" data-page="2">›</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 RA Game. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/community.js"></script>
+</body>
+</html>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 20px 0;
+            border-bottom: 2px solid #e94560;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            background: linear-gradient(90deg, #e94560, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e94560;
+        }
+
+        .page-hero {
+            height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                        linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-bottom: 3px solid #e94560;
+        }
+
+        .page-hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #e94560, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            font-size: 20px;
+            color: #ccc;
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .community-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar-category {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid #2a2a3e;
+            border-radius: 15px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 16px;
+        }
+
+        .sidebar-category:hover,
+        .sidebar-category.active {
+            border-color: #e94560;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            transform: translateX(5px);
+        }
+
+        .category-icon {
+            font-size: 20px;
+        }
+
+        .create-post-btn {
+            padding: 15px;
+            background: linear-gradient(90deg, #e94560, #ff6b6b);
+            border: none;
+            border-radius: 15px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .create-post-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.5);
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid #2a2a3e;
+            border-radius: 15px;
+            color: #fff;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #e94560;
+        }
+
+        .search-btn {
+            padding: 15px 30px;
+            background: linear-gradient(90deg, #e94560, #ff6b6b);
+            border: none;
+            border-radius: 15px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.5);
+        }
+
+        .post-card {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid #2a2a3e;
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .post-card:hover {
+            border-color: #e94560;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.2);
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .post-info {
+            flex: 1;
+        }
+
+        .post-title {
+            font-size: 20px;
+            color: #e94560;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .post-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .author-avatar {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .post-tags {
+            display: flex;
+            gap: 8px;
+        }
+
+        .post-tag {
+            padding: 4px 12px;
+            background: rgba(233, 69, 96, 0.2);
+            border: 1px solid #e94560;
+            border-radius: 12px;
+            font-size: 12px;
+            color: #e94560;
+        }
+
+        .post-excerpt {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .post-stats {
+            display: flex;
+            gap: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #2a2a3e;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #888;
+            font-size: 14px;
+        }
+
+        .stat-icon {
+            color: #e94560;
+        }
+
+        .hot-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: linear-gradient(90deg, #e94560, #ff6b6b);
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .page-btn {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid #2a2a3e;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 16px;
+        }
+
+        .page-btn:hover,
+        .page-btn.active {
+            border-color: #e94560;
+            background: linear-gradient(90deg, #e94560, #ff6b6b);
+        }
+
+        footer {
+            background: #0a0a0a;
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 2px solid #e94560;
+            margin-top: 80px;
+        }
+
+        footer p {
+            color: #888;
+        }
+
+        @media (max-width: 968px) {
+            .community-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .page-hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">RA</a>
+            <ul class="nav-links">
+                <li><a href="index.html">홈</a></li>
+                <li><a href="gameinfo.html">게임소개</a></li>
+                <li><a href="news.html">소식</a></li>
+                <li><a href="community.html" style="color: #e94560;">커뮤니티</a></li>
+                <li><a href="download.html">다운로드</a></li>
+                <li><a href="login.html">로그인</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-hero">
+        <div>
+            <h1>커뮤니티</h1>
+            <p>플레이어들과 소통하고 정보를 공유하세요</p>
+        </div>
+    </div>
+
+    <section class="section">
+        <div class="community-layout">
+            <aside class="sidebar">
+                <button class="create-post-btn">✍️ 글쓰기</button>
+                <div class="sidebar-category active">
+                    <span class="category-icon">🏠</span>
+                    <span>전체 게시판</span>
+                </div>
+                <div class="sidebar-category">
+                    <span class="category-icon">💬</span>
+                    <span>자유 게시판</span>
+                </div>
+                <div class="sidebar-category">
+                    <span class="category-icon">❓</span>
+                    <span>질문/답변</span>
+                </div>
+                <div class="sidebar-category">
+                    <span class="category-icon">📊</span>
+                    <span>공략/팁</span>
+                </div>
+                <div class="sidebar-category">
+                    <span class="category-icon">🎨</span>
+                    <span>팬아트</span>
+                </div>
+                <div class="sidebar-category">
+                    <span class="category-icon">🎥</span>
+                    <span>영상</span>
+                </div>
+                <div class="sidebar-category">
+                    <span class="category-icon">⚔️</span>
+                    <span>길드 모집</span>
+                </div>
+                <div class="sidebar-category">
+                    <span class="category-icon">💎</span>
+                    <span>거래</span>
+                </div>
+            </aside>
+
+            <main class="main-content">
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="게시글 검색...">
+                    <button class="search-btn">🔍 검색</button>
+                </div>
+
+                <article class="post-card">
+                    <div class="post-header">
+                        <div class="post-info">
+                            <h3 class="post-title">
+                                신규 레이드 공략법 완벽 정리 🔥
+                                <span class="hot-badge">HOT</span>
+                            </h3>
+                            <div class="post-meta">
+                                <div class="post-author">
+                                    <div class="author-avatar">🦸</div>
+                                    <span>레이드마스터</span>
+                                </div>
+                                <span>📅 2시간 전</span>
+                            </div>
+                        </div>
+                        <div class="post-tags">
+                            <span class="post-tag">공략</span>
+                            <span class="post-tag">레이드</span>
+                        </div>
+                    </div>
+                    <p class="post-excerpt">
+                        고대의 신전 레이드 1~3페이즈까지 완벽 공략법을 정리했습니다. 
+                        각 보스별 패턴과 딜타임, 필수 아이템까지 모두 담았으니 참고하세요!
+                    </p>
+                    <div class="post-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">👁️</span>
+                            <span>1,248</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">👍</span>
+                            <span>156</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">💬</span>
+                            <span>43</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-header">
+                        <div class="post-info">
+                            <h3 class="post-title">워리어 빌드 추천 좀 해주세요</h3>
+                            <div class="post-meta">
+                                <div class="post-author">
+                                    <div class="author-avatar">⚔️</div>
+                                    <span>초보전사</span>
+                                </div>
+                                <span>📅 5시간 전</span>
+                            </div>
+                        </div>
+                        <div class="post-tags">
+                            <span class="post-tag">질문</span>
+                        </div>
+                    </div>
+                    <p class="post-excerpt">
+                        워리어로 막 70렙 찍었는데 어떤 빌드로 가야할지 모르겠어요. 
+                        PVE 위주로 하려고 하는데 추천 부탁드립니다!
+                    </p>
+                    <div class="post-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">👁️</span>
+                            <span>342</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">👍</span>
+                            <span>12</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">💬</span>
+                            <span>18</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-header">
+                        <div class="post-info">
+                            <h3 class="post-title">
+                                제 길드 소개합니다! 신규 길드원 모집중
+                            </h3>
+                            <div class="post-meta">
+                                <div class="post-author">
+                                    <div class="author-avatar">👑</div>
+                                    <span>길드마스터김</span>
+                                </div>
+                                <span>📅 8시간 전</span>
+                            </div>
+                        </div>
+                        <div class="post-tags">
+                            <span class="post-tag">길드모집</span>
+                        </div>
+                    </div>
+                    <p class="post-excerpt">
+                        활동적인 길드 '이터널'에서 신규 길드원을 모집합니다. 
+                        주 3회 레이드 진행, 길드버프 상시 활성화! 친목 위주 길드입니다.
+                    </p>
+                    <div class="post-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">👁️</span>
+                            <span>567</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">👍</span>
+                            <span>34</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">💬</span>
+                            <span>27</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-header">
+                        <div class="post-info">
+                            <h3 class="post-title">
+                                RA 팬아트 그려봤어요 ✨
+                                <span class="hot-badge">HOT</span>
+                            </h3>
+                            <div class="post-meta">
+                                <div class="post-author">
+                                    <div class="author-avatar">🎨</div>
+                                    <span>아티스트현아</span>
+                                </div>
+                                <span>📅 12시간 전</span>
+                            </div>
+                        </div>
+                        <div class="post-tags">
+                            <span class="post-tag">팬아트</span>
+                        </div>
+                    </div>
+                    <p class="post-excerpt">
+                        제가 좋아하는 메이지 캐릭터를 팬아트로 그려봤습니다. 
+                        많이 봐주세요! 다음엔 워리어도 그려볼 예정입니다 ㅎㅎ
+                    </p>
+                    <div class="post-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">👁️</span>
+                            <span>2,134</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">👍</span>
+                            <span>289</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">💬</span>
+                            <span>67</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-header">
+                        <div class="post-info">
+                            <h3 class="post-title">PVP 메타 변화 분석 (패치 2.5.0 기준)</h3>
+                            <div class="post-meta">
+                                <div class="post-author">
+                                    <div class="author-avatar">📊</div>
+                                    <span>데이터분석러</span>
+                                </div>
+                                <span>📅 1일 전</span>
+                            </div>
+                        </div>
+                        <div class="post-tags">
+                            <span class="post-tag">공략</span>
+                            <span class="post-tag">PVP</span>
+                        </div>
+                    </div>
+                    <p class="post-excerpt">
+                        최신 패치 이후 PVP 메타가 크게 변했습니다. 
+                        각 클래스별 승률 통계와 함께 현재 최강 조합을 분석해봤어요.
+                    </p>
+                    <div class="post-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">👁️</span>
+                            <span>892</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">👍</span>
+                            <span>78</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">💬</span>
+                            <span>35</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-header">
+                        <div class="post-info">
+                            <h3 class="post-title">초보자를 위한 골드 파밍 가이드</h3>
+                            <div class="post-meta">
+                                <div class="post-author">
+                                    <div class="author-avatar">💰</div>
+                                    <span>부자되고싶다</span>
+                                </div>
+                                <span>📅 1일 전</span>
+                            </div>
+                        </div>
+                        <div class="post-tags">
+                            <span class="post-tag">공략</span>
+                        </div>
+                    </div>
+                    <p class="post-excerpt">
+                        효율적으로 골드를 모으는 방법을 정리했습니다. 
+                        초보자도 하루 50만 골드는 벌 수 있는 루트 공개!
+                    </p>
+                    <div class="post-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">👁️</span>
+                            <span>1,567</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">👍</span>
+                            <span>143</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">💬</span>
+                            <span>52</span>
+                        </div>
+                    </div>
+                </article>
+
+                <div class="pagination">
+                    <button class="page-btn">←</button>
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn">4</button>
+                    <button class="page-btn">5</button>
+                    <button class="page-btn">→</button>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 RA Game. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // 사이드바 카테고리 클릭
+        document.querySelectorAll('.sidebar-category').forEach(category => {
+            category.addEventListener('click', function() {
+                document.querySelectorAll('.sidebar-category').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // 글쓰기 버튼
+        document.querySelector('.create-post-btn').addEventListener('click', function() {
+            alert('로그인이 필요한 기능입니다.');
+            window.location.href = 'login.html';
+        });
+
+        // 페이지네이션
+        document.querySelectorAll('.page-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.textContent !== '←' && this.textContent !== '→') {
+                    document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // 검색 기능
+        document.querySelector('.search-btn').addEventListener('click', function() {
+            const searchValue = document.querySelector('.search-input').value;
+            if (searchValue) {
+                alert(`"${searchValue}" 검색 결과를 표시합니다.`);
+            }
+        });
+    </script>
+</body>
+</html>
