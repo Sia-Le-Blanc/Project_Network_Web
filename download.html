@@ -4,7 +4,321 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RA - 다운로드</title>
-    <style>
+    <link rel="stylesheet" href="assets/css/common.css">
+    <link rel="stylesheet" href="assets/css/download.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">RA</a>
+            <ul class="nav-links">
+                <li><a href="index.html">홈</a></li>
+                <li><a href="gameinfo.html">게임소개</a></li>
+                <li><a href="news.html">소식</a></li>
+                <li><a href="community.html">커뮤니티</a></li>
+                <li><a href="download.html" style="color: #e94560;">다운로드</a></li>
+                <li><a href="login.html">로그인</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="download-hero">
+        <div class="download-hero-content">
+            <h1>RA 다운로드</h1>
+            <p>
+                지금 바로 RA의 세계로 떠나보세요!<br>
+                무료로 플레이하고 친구들과 함께 모험을 즐기세요.
+            </p>
+            <a href="#" class="main-download-btn" id="mainDownloadBtn" data-platform="windows">
+                🚀 무료 다운로드
+            </a>
+        </div>
+    </div>
+
+    <section class="platform-section">
+        <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+            <h2 style="color: #e94560; font-size: 42px; margin-bottom: 20px;">플랫폼 선택</h2>
+            <p style="color: #ccc; font-size: 18px;">원하는 플랫폼에서 RA를 즐기세요</p>
+        </div>
+        
+        <div class="platform-grid">
+            <div class="platform-card">
+                <span class="platform-icon">🪟</span>
+                <h3>Windows</h3>
+                <p>
+                    Windows 10 이상에서 최적화된 성능을 경험하세요. 
+                    DirectX 12 지원으로 최고의 그래픽 품질을 제공합니다.
+                </p>
+                <a href="#" class="platform-download-btn" data-platform="windows">Windows용 다운로드</a>
+                <div class="platform-info">
+                    <strong>파일 크기:</strong> 8.5GB<br>
+                    <strong>지원 OS:</strong> Windows 10/11 (64bit)
+                </div>
+            </div>
+
+            <div class="platform-card">
+                <span class="platform-icon">🍎</span>
+                <h3>macOS</h3>
+                <p>
+                    Mac에 최적화된 네이티브 성능으로 부드러운 게임플레이를 즐기세요. 
+                    Metal API 지원으로 향상된 그래픽을 제공합니다.
+                </p>
+                <a href="#" class="platform-download-btn" data-platform="mac">Mac용 다운로드</a>
+                <div class="platform-info">
+                    <strong>파일 크기:</strong> 9.2GB<br>
+                    <strong>지원 OS:</strong> macOS 11.0 이상
+                </div>
+            </div>
+
+            <div class="platform-card">
+                <span class="platform-icon">🤖</span>
+                <h3>Android</h3>
+                <p>
+                    언제 어디서나 스마트폰으로 RA를 플레이하세요. 
+                    터치 컨트롤에 최적화된 모바일 전용 UI를 제공합니다.
+                </p>
+                <a href="#" class="platform-download-btn" data-platform="android">Google Play에서 받기</a>
+                <div class="platform-info">
+                    <strong>파일 크기:</strong> 3.8GB<br>
+                    <strong>지원 OS:</strong> Android 8.0 이상
+                </div>
+            </div>
+
+            <div class="platform-card">
+                <span class="platform-icon">📱</span>
+                <h3>iOS</h3>
+                <p>
+                    iPhone과 iPad에서 최적화된 성능으로 RA를 즐기세요. 
+                    Retina 디스플레이를 활용한 선명한 그래픽을 경험할 수 있습니다.
+                </p>
+                <a href="#" class="platform-download-btn" data-platform="ios">App Store에서 받기</a>
+                <div class="platform-info">
+                    <strong>파일 크기:</strong> 4.1GB<br>
+                    <strong>지원 OS:</strong> iOS 14.0 이상
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section requirements-section">
+        <h2 style="text-align: center; color: #e94560; margin-bottom: 20px;">시스템 요구사항</h2>
+        <p style="text-align: center; color: #ccc; font-size: 18px; margin-bottom: 60px;">
+            최적의 게임 경험을 위한 권장 사양을 확인해보세요
+        </p>
+        
+        <div class="requirements-grid">
+            <div class="requirements-card">
+                <h3>최소 사양 (PC)</h3>
+                <table class="requirements-table">
+                    <tr>
+                        <td>운영체제</td>
+                        <td>Windows 10 64bit</td>
+                    </tr>
+                    <tr>
+                        <td>프로세서</td>
+                        <td>Intel Core i3-6100 / AMD Ryzen 3 1200</td>
+                    </tr>
+                    <tr>
+                        <td>메모리</td>
+                        <td>8GB RAM</td>
+                    </tr>
+                    <tr>
+                        <td>그래픽</td>
+                        <td>NVIDIA GTX 1050 / AMD RX 560</td>
+                    </tr>
+                    <tr>
+                        <td>DirectX</td>
+                        <td>버전 12</td>
+                    </tr>
+                    <tr>
+                        <td>저장공간</td>
+                        <td>15GB 사용 가능 공간</td>
+                    </tr>
+                    <tr>
+                        <td>네트워크</td>
+                        <td>브로드밴드 인터넷 연결</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="requirements-card">
+                <h3>권장 사양 (PC)</h3>
+                <table class="requirements-table">
+                    <tr>
+                        <td>운영체제</td>
+                        <td>Windows 11 64bit</td>
+                    </tr>
+                    <tr>
+                        <td>프로세서</td>
+                        <td>Intel Core i5-8400 / AMD Ryzen 5 2600</td>
+                    </tr>
+                    <tr>
+                        <td>메모리</td>
+                        <td>16GB RAM</td>
+                    </tr>
+                    <tr>
+                        <td>그래픽</td>
+                        <td>NVIDIA RTX 3060 / AMD RX 6600</td>
+                    </tr>
+                    <tr>
+                        <td>DirectX</td>
+                        <td>버전 12</td>
+                    </tr>
+                    <tr>
+                        <td>저장공간</td>
+                        <td>25GB 사용 가능 공간 (SSD 권장)</td>
+                    </tr>
+                    <tr>
+                        <td>네트워크</td>
+                        <td>브로드밴드 인터넷 연결</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="updates-section">
+        <div class="updates-container">
+            <h2 style="text-align: center; color: #e94560; margin-bottom: 20px;">최신 업데이트</h2>
+            <p style="text-align: center; color: #ccc; font-size: 18px; margin-bottom: 60px;">
+                최신 버전의 새로운 기능들을 확인해보세요
+            </p>
+
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-info">
+                        <h3>버전 2.5.0 - "어둠의 성채"</h3>
+                        <span>2025년 12월 1일 출시</span>
+                    </div>
+                    <div class="version-size">8.5GB</div>
+                </div>
+                <div class="version-content">
+                    <ul class="update-list">
+                        <li>새로운 고난이도 던전 '어둠의 성채' 추가</li>
+                        <li>신규 클래스 '어쌔신' 출시</li>
+                        <li>PvP 시스템 개편 및 새로운 랭크 시스템</li>
+                        <li>길드 하우스 시스템 추가</li>
+                        <li>그래픽 엔진 최적화로 성능 향상</li>
+                        <li>100여 가지 버그 수정 및 안정성 개선</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="version-card">
+                <div class="version-header">
+                    <div class="version-info">
+                        <h3>버전 2.4.2 - 안정성 업데이트</h3>
+                        <span>2025년 11월 15일 출시</span>
+                    </div>
+                    <div class="version-size">2.1GB</div>
+                </div>
+                <div class="version-content">
+                    <ul class="update-list">
+                        <li>네트워크 연결 안정성 개선</li>
+                        <li>메모리 사용량 최적화</li>
+                        <li>UI 반응성 향상</li>
+                        <li>다양한 클래스 밸런스 조정</li>
+                        <li>크래시 이슈 해결</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section faq-section">
+        <div class="faq-container">
+            <h2 style="text-align: center; color: #e94560; margin-bottom: 20px;">자주 묻는 질문</h2>
+            <p style="text-align: center; color: #ccc; font-size: 18px; margin-bottom: 60px;">
+                다운로드와 설치에 관한 자주 묻는 질문들
+            </p>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>게임을 플레이하려면 비용을 지불해야 하나요?</h4>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        RA는 완전 무료로 플레이할 수 있는 게임입니다. 
+                        기본 게임 콘텐츠는 모두 무료이며, 선택적으로 코스메틱 아이템을 구매할 수 있습니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>다운로드가 실패하거나 느려요. 어떻게 해야 하나요?</h4>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        인터넷 연결을 확인하고 백그라운드에서 실행 중인 다른 다운로드를 중지해 보세요. 
+                        방화벽이나 안티바이러스 프로그램에서 게임을 차단하고 있지 않은지도 확인해 주세요.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>모바일과 PC 간 계정 동기화가 가능한가요?</h4>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        네, 계정을 생성하면 모든 플랫폼에서 동일한 계정으로 플레이할 수 있습니다. 
+                        진행 상황과 아이템이 자동으로 동기화됩니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>게임 실행 시 오류가 발생해요.</h4>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        시스템 요구사항을 만족하는지 확인하고, 그래픽 드라이버를 최신 버전으로 업데이트해 주세요. 
+                        그래도 문제가 지속되면 고객지원팀에 문의해 주세요.
+                    </p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h4>업데이트는 어떻게 이루어지나요?</h4>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>
+                        게임 실행 시 자동으로 업데이트를 확인하고 다운로드됩니다. 
+                        수동으로 업데이트하려면 게임 설정에서 '업데이트 확인' 기능을 사용할 수 있습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 다운로드 모달 -->
+    <div class="download-modal" id="downloadModal">
+        <div class="modal-content">
+            <h3 id="modalTitle">다운로드 진행 중</h3>
+            <p id="modalMessage">파일을 다운로드하고 있습니다...</p>
+            <div class="download-progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <button class="close-modal" id="closeModal">닫기</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 RA Game. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/download.js"></script>
+</body>
+</html>
         * {
             margin: 0;
             padding: 0;

@@ -1,0 +1,234 @@
+/* gameinfo.css - 게임소개 페이지 전용 스타일 */
+
+.story-section {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    padding: 80px 20px;
+    margin: 0;
+    max-width: none;
+}
+
+.story-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.story-text h2 {
+    font-size: 42px;
+    color: #e94560;
+    margin-bottom: 30px;
+}
+
+.story-text p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.story-visual {
+    background: linear-gradient(135deg, #e94560, #ff6b6b);
+    height: 400px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 72px;
+    box-shadow: 0 20px 60px rgba(233, 69, 96, 0.4);
+}
+
+/* 핵심 특징 */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.feature-box {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    padding: 40px;
+    border-radius: 20px;
+    border: 2px solid #2a2a3e;
+    transition: all 0.3s;
+}
+
+.feature-box:hover {
+    border-color: #e94560;
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(233, 69, 96, 0.3);
+}
+
+.feature-icon-large {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #e94560, #ff6b6b);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+.feature-box h3 {
+    font-size: 26px;
+    color: #ff6b6b;
+    margin-bottom: 15px;
+}
+
+.feature-box p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #ccc;
+}
+
+/* 클래스 소개 */
+.classes-section {
+    background: #16213e;
+    padding: 80px 20px;
+    margin: 0;
+    max-width: none;
+}
+
+.classes-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.class-card {
+    background: linear-gradient(135deg, #1a1a2e, #0a0a0a);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid #2a2a3e;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.class-card:hover {
+    border-color: #e94560;
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(233, 69, 96, 0.4);
+}
+
+.class-image {
+    height: 250px;
+    background: linear-gradient(135deg, #e94560, #ff6b6b);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+}
+
+.class-info {
+    padding: 25px;
+}
+
+.class-info h3 {
+    font-size: 24px;
+    color: #e94560;
+    margin-bottom: 10px;
+}
+
+.class-info p {
+    font-size: 15px;
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* 통계 섹션 */
+.stats-section {
+    text-align: center;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.stat-box {
+    padding: 40px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 20px;
+    border: 2px solid #e94560;
+}
+
+.stat-number {
+    font-size: 56px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #e94560, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+}
+
+.stat-label {
+    font-size: 18px;
+    color: #ccc;
+}
+
+/* CTA 섹션 */
+.cta-section {
+    background: linear-gradient(135deg, #e94560, #ff6b6b);
+    padding: 80px 20px;
+    text-align: center;
+    margin: 0;
+    max-width: none;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-content h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.cta-content p {
+    font-size: 20px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.cta-content .btn {
+    background: #fff;
+    color: #e94560;
+    font-size: 20px;
+    padding: 18px 50px;
+    border-radius: 30px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cta-content .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+    .story-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .story-visual {
+        height: 300px;
+        font-size: 60px;
+    }
+    
+    .cta-content h2 {
+        font-size: 36px;
+    }
+}
